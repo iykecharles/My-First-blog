@@ -1,0 +1,175 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+  
+  
+  <title>My Blog</title>
+</head>
+
+<body>
+  <!--Nav bar-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img src="{% static 'blog/icons8-c-48.png' %}" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto first">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'blog-home' %}">Blog</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled text-success" href="#" tabindex="-1" aria-disabled="true">You are logged in</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled text-danger" href="#" tabindex="-1" aria-disabled="true">You are not logged in</a>
+        </li>
+        
+        {% endif %}
+        
+        
+      </ul>
+      
+    </div>
+  </nav>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      {% if messages %}
+       {% for message in messages %}
+        {{ message }}
+       {% endfor %}
+      
+      {% endif %}
+    </div>
+
+  </div>
+
+</div>
+
+{% block content %}
+{% endblock %}
+{% block content1 %}
+{% endblock %}
+
+
+
+  <!--connect-->
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-12 margins">
+        <h3>Contact Us</h3>
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 btn btn-lg">
+        <a href="https://www.linkedin.com/in/charles-ezema-2442b465/" class="paddings">LINKEDIN</i></a>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 btn btn-lg">
+        <a href="https://github.com/iykecharles316" class="paddings">GITHUB</i></a>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 btn btn-lg">
+        <a href="https://twitter.com/iykecharles316" class="paddings">TWITTER</i></a>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 btn btn-lg">
+        <a href="https://www.instagram.com/software_developer316/" class="paddings">INSTAGRAM</i></a>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 btn btn-lg">
+        <a href="https://web.facebook.com/charles.ezema.3" class="paddings">FACEBOOK</i></a>
+      </div>
+
+       
+      
+    </div>
+
+  </div>
+
+  <!--footer-->
+  <div class="container-fluid">
+    <div class="row text-center padding">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <hr>
+        <h5 class="address">Our Addresses</h5>
+        <hr>
+        <h5>91b Oniru Road, Lekki</h5>
+        <h5>Lagos, Nigeria</h5>
+        <h5>Iykecharles@yahoo.com</h5>
+        <h5>+234-7030669469</h5>
+       
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <hr>
+        <h5 class="address">Our Working hours</h5>
+        <hr>
+        <h5>Mondays-Fridays: 8am-4pm</h5>
+        <h5>Saturdays: 10am-2pm</h5>
+        <h5>Sundays: closed</h5>
+        
+      
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <hr>
+        <h5 class="address">Service Area</h5>
+        <hr>
+        <h5>Lagos state</h5>
+        <h5>Abuja</h5>
+        <h5>Portharcourt</h5>
+        <h5>Ghana</h5>
+      
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

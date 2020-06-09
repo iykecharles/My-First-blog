@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row text-center">
+    <div class="col-12 text-center">
+      <div class="card post">
+        <img src="{{user.profile.image.url}}" class="card-img-top" alt="">
+        <h5 class="display-4 text-uppercase text-info">{{user.username}}  PROFILE.</h5>
+        <hr>
+        <h5 class="card-text card-body">{{user.email}} is your active email address</h5>
+        <hr>
+        <form action="" method="post">
+          <div>
+            {% csrf_token %}
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
+          </div>
+          <button class="btn btn-lg btn-success" type="submit">Update</button>
+        </form>
+        <div>
+          {% if user.is_authenticated %}
+            <h5>You can update your profile at any time</h5>
+          {% else %}
+            <small>Already Have an account?</small>
+            <a href="{% url 'login' %}">Log In</a>
+          {% endif %}
+
+          
+      
+      </div>
+      
+
+
+    </div>
+
+
+
+  </div>
+
+</div>
+
+{% endblock %}

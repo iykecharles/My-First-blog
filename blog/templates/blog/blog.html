@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+  <!--second navbar section-->
+  {% if user.is_authenticated %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-info temp">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse temp" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto first">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'post-create' %}">Create Post <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'password_reset' %}">Change Password</a>
+        </li>
+        
+        
+  
+      </ul>
+  
+    </div>
+  </nav>
+  {% endif %}
+  
+  <!--emoji section-->
+
+    <div class="row text-center">
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+        <img class="gif" src="/static/blog/gif/chicken.gif" alt="">
+  
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+        <img class="gif" src="/static/blog/gif/panda.gif" alt="">
+  
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+        <img class="gif" src="/static/blog/gif/poo.gif" alt="">
+  
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+        <img class="gif" src="/static/blog/gif/unicorn.gif" alt="">
+  
+      </div>
+    </div>
+  
+  </div>
+  <!--meet the team-->
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2 class="display-2">The World Post covid-19</h2>
+      </div>
+
+    </div>
+  </div>
+  <hr class="my-4">
+
+  <!--cards-->
+  {% for post in post %}
+  <div class="container-fluid">
+
+    
+    <div class="row text-center">
+      
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card post">
+          <img src="/static/blog/team2.png" class="card-img-top" alt="">
+        
+          <a class="card-body card-title display-4" href="{% url 'post-detail' post.id %}">{{ post.title }}</a>
+          <hr>
+          <h5 class="card-text card-body">{{ post.content }}</h5>
+          <hr>
+          <small class="card-text card-body">Created by {{ post.author }} on {{ post.date_created }}</small>
+          <hr>
+          
+        </div>
+
+      </div>
+      
+
+    </div>
+  </div>
+    
+{% endfor %}
+
+<div class="container-fluid">
+  <div class="row text-center">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+  {% if is_paginated %}
+    {% if page_obj.has_previous %}
+      <a class="btn btn-sm btn-info" href="?page=1">First</a>
+      <a class="btn btn-sm btn-info" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if num == page_obj.number %}
+        <a class="btn btn-sm btn-info" href="?page={{ num }}">{{ num }}</a>
+    
+      {% elif page_obj.number|add:"3" > num and num > page_obj.number|add:"-3" %}
+      <a class="btn btn-sm btn-info" href="?page={{ num }}">{{ num }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+    <a class="btn btn-sm btn-info" href="?page={{ page_obj.next_page_number }}">Next</a>
+    <a class="btn btn-sm btn-info" href="?page={{ page_obj.paginator_num_pages }}">Last</a>
+    {% endif %}
+
+  
+  {% endif %}
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body>
+
+{% endblock %}
+

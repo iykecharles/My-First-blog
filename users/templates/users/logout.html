@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row text-center">
+    <div class="col-12 text-center">
+      <h4 class="alert alert-warning">You have been logged out.</h4>
+      <small>Log back in here <a href="{% url 'login' %}">Log In</a></small>
+    </div>
+    
+  </div>
+
+</div>
+<div style="height: 100px;">
+
+</div>
+
+{% endblock %}
