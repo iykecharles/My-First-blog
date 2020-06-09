@@ -10,6 +10,7 @@ autopep8 = "*"
 django = "*"
 django-crispy-forms = "*"
 django-storages = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
