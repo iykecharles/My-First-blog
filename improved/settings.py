@@ -33,15 +33,14 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'django.contrib.admin',
-    'crispy_forms',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
-
-
+    'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [
